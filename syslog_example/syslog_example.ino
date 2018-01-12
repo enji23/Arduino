@@ -1,12 +1,8 @@
 /*
  Syslog client: SimpleLogging example
- Demonstrates logging messages to Syslog server in IETF format (rfc5424) in 
+ Demonstrates logging messages to Syslog server in IETF format (rfc5424) in
  combination with the ESP8266 board/library.
  
- For more about Syslog see https://en.wikipedia.org/wiki/Syslog
- created 3 Nov 2016
- by Martin Sloup
- This code is in the public domain.
  */
 
 #include <ESP8266WiFi.h>
@@ -60,7 +56,7 @@ void setup() {
 }
 
 void loop() {
-  // Severity levels can be found in Syslog.h. They are same like in Linux 
+  // Severity levels can be found in Syslog.h. They are same like in Linux
   // syslog.
   syslog.log(LOG_INFO, "Begin loop");
 
@@ -68,15 +64,15 @@ void loop() {
   syslog.logf(LOG_ERR,  "This is error message no. %d", iteration);
   syslog.logf(LOG_INFO, "This is info message no. %d", iteration);
 
-  // You can force set facility in pri parameter for this log message. More 
+  // You can force set facility in pri parameter for this log message. More
   // facilities in syslog.h or in Linux syslog documentation.
-  syslog.logf(LOG_DAEMON | LOG_INFO, "This is daemon info message no. %d", 
+  syslog.logf(LOG_DAEMON | LOG_INFO, "This is daemon info message no. %d",
     iteration);
 
   // F() macro is supported too
   syslog.log(LOG_INFO, F("End loop"));
   iteration++;
-  
+
   // wait ten seconds before sending log message again
   delay(10000);
 }
